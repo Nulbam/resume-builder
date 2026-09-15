@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume & Portfolio Builder</title>
+    <!-- 정적 CSS 스타일시트 연결 -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 영역 -->
+        <header class="app-header">
+            <h1>AI Resume & Portfolio Builder</h1>
+            <p class="subtitle">구글 Gemini AI가 당신의 경험을 바탕으로 완벽한 이력서와 포트폴리오를 작성해 드립니다.</p>
+        </header>
+
+        <!-- 메인 콘텐츠 영역 -->
+        <main class="main-content">
+            <!-- 1. 입력 폼 영역 -->
+            <section class="form-card">
+                <h2>정보 입력하기</h2>
+                <form id="resume-form" novalidate>
+                    <!-- 이름 입력 -->
+                    <div class="form-group">
+                        <label for="name"><span class="icon-tag">👤</span> 이름 <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="예: 홍길동" required>
+                    </div>
+
+                    <!-- 지원 직무 입력 -->
+                    <div class="form-group">
+                        <label for="job-title"><span class="icon-tag">💼</span> 지원 직무 <span class="required">*</span></label>
+                        <input type="text" id="job-title" name="job_title" placeholder="예: 백엔드 개발자, 서비스 기획자, 데이터 분석가" required>
+                    </div>
+
+                    <!-- 경력 사항 입력 -->
+                    <div class="form-group">
+                        <label for="experience"><span class="icon-tag">📜</span> 주요 경력 및 이력 <span class="required">*</span></label>
+                        <textarea id="experience" name="experience" rows="4" placeholder="회사명, 담당 업무, 재직 기간, 주요 역할 등을 자유롭게 적어주세요.&#10;예: (주)한국소프트웨어 백엔드 개발 1년 6개월, REST API 설계 및 데이터베이스 최적화 담당" required></textarea>
+                    </div>
+
+                    <!-- 주요 프로젝트 입력 -->
+                    <div class="form-group">
+                        <label for="projects"><span class="icon-tag">🚀</span> 핵심 프로젝트 경험 <span class="required">*</span></label>
+                        <textarea id="projects" name="projects" rows="5" placeholder="진행한 프로젝트의 이름, 목표, 사용 기술, 본인의 기여도 및 결과 성과를 적어주세요.&#10;예: 전자상거래 웹 서비스 구축 프로젝트 (Flask, PostgreSQL 사용, 응답 속도 30% 개선)" required></textarea>
+                    </div>
+
+                    <!-- Tone(어조) 선택 -->
+                    <div class="form-group">
+                        <label for="tone"><span class="icon-tag">🎨</span> 문서 어조 (Tone)</label>
+                        <select id="tone" name="tone">
+                            <option value="전문적이고 신뢰감 있는" selected>전문적이고 신뢰감 있는 (기본 추천)</option>
+                            <option value="자신감 있고 적극적인">자신감 있고 적극적인</option>
+                            <option value="차분하고 정중한">차분하고 정중한</option>
+                            <option value="열정적이고 창의적인">열정적이고 창의적인</option>
+                        </select>
+                    </div>
+
+                    <!-- 이력서 디자인 양식(템플릿) 선택 -->
+                    <div class="form-group">
+                        <label><span class="icon-tag">📑</span> 이력서 디자인 양식 선택</label>
+                        <div class="template-selector-grid">
+                            <!-- 템플릿 1: 모던 오렌지 2단형 (sample1.png 이미지 활용) -->
+                            <label class="template-card active" data-template="sample1">
+                                <input type="radio" name="template_style" value="sample1" checked>
+                                <div class="template-img-wrap">
+                                    <img src="/static/img/sample1.png" alt="모던 오렌지 2단형 양식 미리보기" class="template-thumb">
+                                    <span class="template-badge">추천 양식</span>
+                                    <span class="select-check">✓</span>
+                                </div>
+                                <div class="template-desc">
+                                    <strong>모던 오렌지 2단형 (샘플 1)</strong>
+                                    <span>프로필 사진과 사이드바가 강조된 트렌디한 비주얼 양식</span>
+                                </div>
+                            </label>
+
+                            <!-- 템플릿 2: 클래식 베이지 표준형 -->
+                            <label class="template-card" data-template="classic">
+                                <input type="radio" name="template_style" value="classic">
+                                <div class="template-img-wrap placeholder-wrap beige-wrap">
+                                    <div class="mini-doc-preview">
+                                        <div class="mini-line header-line"></div>
+                                        <div class="mini-line sub-line"></div>
+                                        <div class="mini-line body-line"></div>
+                                        <div class="mini-line body-line"></div>
+                                        <div class="mini-line half-line"></div>
+                                    </div>
+                                    <span class="select-check">✓</span>
+                                </div>
+                                <div class="template-desc">
+                                    <strong>클래식 베이지 표준형</strong>
+                                    <span>차분하고 신뢰감을 주는 전통적인 1단 문서 양식</span>
+                                </div>
+                            </label>
+
+                            <!-- 템플릿 3: 미니멀 모노크롬형 -->
+                            <label class="template-card" data-template="minimal">
+                                <input type="radio" name="template_style" value="minimal">
+                                <div class="template-img-wrap placeholder-wrap mono-wrap">
+                                    <div class="mini-doc-preview">
+                                        <div class="mini-line header-line dark"></div>
+                                        <div class="mini-line body-line dark"></div>
+                                        <div class="mini-line body-line dark"></div>
+                                    </div>
+                                    <span class="select-check">✓</span>
+                                </div>
+                                <div class="template-desc">
+                                    <strong>심플 모노크롬형</strong>
+                                    <span>군더더기 없이 경력과 성과에 집중하는 깔끔한 흑백 양식</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Prompt 모드 선택 -->
+                    <div class="form-group">
+                        <label><span class="icon-tag">⚙️</span> 작성 모드 (프롬프트 선택)</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="prompt_type" value="A" checked>
+                                <span><strong>Prompt A (일반 모드)</strong>: 읽기 쉽고 단정한 표준 이력서 (신입 및 주니어 추천)</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="prompt_type" value="B">
+                                <span><strong>Prompt B (전문가 모드)</strong>: STAR 기법 및 수치 성과 중심의 임팩트 이력서 (경력직 추천)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 생성 버튼 -->
+                    <button type="submit" id="submit-btn" class="btn btn-primary">✨ AI 이력서 & 포트폴리오 생성하기</button>
+                </form>
+            </section>
+
+            <!-- 2. 오류 메시지 표시 영역 -->
+            <div id="error-box" class="alert alert-error" style="display: none;"></div>
+
+            <!-- 3. 로딩 상태 표시 영역 -->
+            <div id="loading-box" class="loading-container" style="display: none;">
+                <div class="spinner"></div>
+                <p class="loading-text">Gemini AI가 이력서와 포트폴리오를 맞춤 작성 중입니다.<br>잠시만 기다려 주세요 (약 5~10초 소요)</p>
+            </div>
+
+            <!-- 4. 생성 결과 표시 영역 -->
+            <section id="result-box" class="result-container" style="display: none;">
+                <div class="result-header">
+                    <h2>AI 작성 결과</h2>
+                    <div class="action-buttons">
+                        <button type="button" id="copy-resume-btn" class="btn btn-secondary">📋 이력서 복사</button>
+                        <button type="button" id="copy-portfolio-btn" class="btn btn-secondary">📋 포트폴리오 복사</button>
+                        <button type="button" id="download-md-btn" class="btn btn-success">📥 마크다운(.md) 다운로드</button>
+                    </div>
+                </div>
+
+                <!-- 이력서 결과 카드 -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <h3><span class="icon-tag icon-resume">📄</span> 이력서 (Resume)</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="resume-output" class="content-preview"></div>
+                    </div>
+                </div>
+
+                <!-- 포트폴리오 결과 카드 -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <h3><span class="icon-tag icon-portfolio">📁</span> 포트폴리오 (Portfolio)</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="portfolio-output" class="content-preview"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 푸터 영역 -->
+        <footer class="app-footer">
+            <p>&copy; 2026 AI Resume & Portfolio Builder. Powered by Flask & Google Gemini API.</p>
+        </footer>
+    </div>
+
+    <!-- 마크다운 렌더링 라이브러리 (marked.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- 정적 자바스크립트 연결 -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

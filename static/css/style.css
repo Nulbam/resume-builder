@@ -1,0 +1,716 @@
+/* ==========================================================
+   AI Resume & Portfolio Builder - 스타일시트 (style.css)
+   따뜻하고 감성적인 웜 베이지(Warm Beige) & 모카 테마
+   ========================================================== */
+
+/* 1. 기본 초기화 및 전체 글꼴 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+    background-color: #f7f3ec; /* 감성적인 웜 베이지 배경 */
+    color: #3e3228;           /* 짙은 밤색 텍스트 */
+    line-height: 1.65;
+    padding: 24px 12px;
+}
+
+/* 2. 전체 페이지 컨테이너 */
+.container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/* 3. 상단 헤더 영역 */
+.app-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.app-header h1 {
+    font-size: 2.2rem;
+    color: #4a3525; /* 깊고 따뜻한 모카 브라운 */
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.app-header .subtitle {
+    font-size: 1rem;
+    color: #7d6b5c; /* 차분한 웜 토프 */
+}
+
+/* 4. 카드 형태의 공통 레이아웃 (아이보리 화이트 + 베이지 테두리 + 부드러운 음영) */
+.form-card, .result-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 30px;
+    margin-bottom: 26px;
+    box-shadow: 0 6px 18px rgba(80, 60, 40, 0.05);
+    border: 1px solid #ebdcd0;
+}
+
+.form-card h2 {
+    font-size: 1.35rem;
+    color: #4a3525;
+    margin-bottom: 22px;
+    border-bottom: 2px solid #f2e8dc;
+    padding-bottom: 12px;
+}
+
+/* 5. 아이콘 뱃지 스타일 (베이지 톤에 맞춘 조화로운 배색) */
+.icon-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: #f0e6d8;
+    border: 1px solid #dfd1c0;
+    border-radius: 7px;
+    margin-right: 8px;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.icon-resume {
+    background-color: #eee4d5;
+    border-color: #ddcfbf;
+}
+
+.icon-portfolio {
+    background-color: #e5ecd8; /* 은은한 세이지 올리브 베이지 */
+    border-color: #d1dcbf;
+}
+
+/* 6. 입력 폼 요소들 */
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: #4a3728;
+}
+
+.form-group .required {
+    color: #c2412b; /* 부드러운 테라코타 레드 */
+    margin-left: 4px;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 13px 15px;
+    font-size: 0.95rem;
+    border: 1px solid #dcd0bf;
+    border-radius: 9px;
+    background-color: #faf7f2; /* 부드러운 오프화이트 크림 */
+    color: #382c22;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #9d683a; /* 따뜻한 카라멜 브라운 */
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(157, 104, 58, 0.16);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* 7. 라디오 버튼 그룹 (Prompt A / B 선택 박스) */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #faf7f2;
+    padding: 16px;
+    border-radius: 9px;
+    border: 1px solid #e8ded2;
+}
+
+.radio-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    color: #4a3728;
+}
+
+.radio-label input[type="radio"] {
+    margin-top: 4px;
+    accent-color: #9d683a;
+}
+
+/* 7.5. 이력서 템플릿 양식 선택기 그리드 (sample1.png 활용) */
+.template-selector-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 6px;
+}
+
+.template-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #faf7f2;
+    border: 2px solid #e8ded2;
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.template-card input[type="radio"] {
+    display: none;
+}
+
+.template-card:hover {
+    border-color: #c99365;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(157, 104, 58, 0.12);
+}
+
+.template-card.active {
+    border-color: #9d683a;
+    background-color: #fdf6ee;
+    box-shadow: 0 4px 14px rgba(157, 104, 58, 0.2);
+}
+
+.template-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid #ebdcd0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.template-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.3s ease;
+}
+
+.template-card:hover .template-thumb {
+    transform: scale(1.04);
+}
+
+.template-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background-color: #ea580c;
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.select-check {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    background-color: #9d683a;
+    color: #ffffff;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.template-card.active .select-check {
+    display: flex;
+}
+
+/* 플레이스홀더 템플릿 실루엣 */
+.placeholder-wrap {
+    padding: 12px;
+    background-color: #fcfbf9;
+}
+
+.beige-wrap {
+    background-color: #f7f3ec;
+}
+
+.mono-wrap {
+    background-color: #f1f5f9;
+}
+
+.mini-doc-preview {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.mini-line {
+    height: 7px;
+    border-radius: 4px;
+    background-color: #e5dacb;
+}
+
+.header-line {
+    height: 12px;
+    background-color: #9d683a;
+    width: 70%;
+    border-radius: 4px;
+}
+
+.header-line.dark {
+    background-color: #334155;
+}
+
+.sub-line {
+    width: 45%;
+    background-color: #c4b5a3;
+}
+
+.body-line {
+    width: 100%;
+}
+
+.body-line.dark {
+    background-color: #cbd5e1;
+}
+
+.half-line {
+    width: 60%;
+}
+
+.template-desc {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.template-desc strong {
+    font-size: 0.88rem;
+    color: #4a3525;
+}
+
+.template-desc span {
+    font-size: 0.75rem;
+    color: #7d6b5c;
+    line-height: 1.35;
+}
+
+/* 8. 버튼 디자인 */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 20px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* 주 생성 버튼 (풍부하고 따뜻한 시나몬/카라멜 브라운) */
+.btn-primary {
+    width: 100%;
+    background-color: #9d683a;
+    color: #ffffff;
+    font-size: 1.05rem;
+    padding: 15px;
+    margin-top: 10px;
+    box-shadow: 0 3px 10px rgba(157, 104, 58, 0.25);
+}
+
+.btn-primary:hover {
+    background-color: #88572e;
+}
+
+.btn-primary:disabled {
+    background-color: #cfc2b4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 복사 버튼 (베이지 조화 버튼) */
+.btn-secondary {
+    background-color: #f2ebe1;
+    color: #523e2d;
+    border: 1px solid #dccebe;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+}
+
+.btn-secondary:hover {
+    background-color: #e6dbcd;
+}
+
+/* 마크다운 다운로드 버튼 (베이지와 가장 잘 어울리는 따뜻한 세이지 올리브) */
+.btn-success {
+    background-color: #5d7347;
+    color: #ffffff;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    box-shadow: 0 2px 8px rgba(93, 115, 71, 0.2);
+}
+
+.btn-success:hover {
+    background-color: #4d6039;
+}
+
+/* 9. 경고 및 오류 알림 박스 */
+.alert {
+    padding: 15px 18px;
+    border-radius: 9px;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.alert-error {
+    background-color: #fbf0ee;
+    color: #9c2e1f;
+    border: 1px solid #f4cfc8;
+}
+
+/* 10. 로딩 스피너 애니메이션 */
+.loading-container {
+    text-align: center;
+    padding: 42px 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #ebdcd0;
+    margin-bottom: 26px;
+    box-shadow: 0 6px 18px rgba(80, 60, 40, 0.04);
+}
+
+.spinner {
+    width: 44px;
+    height: 44px;
+    border: 4px solid #ebdcd0;
+    border-top: 4px solid #9d683a;
+    border-radius: 50%;
+    margin: 0 auto 16px auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 0.95rem;
+    color: #6d5b4c;
+    font-weight: 500;
+}
+
+/* 11. 결과 출력 영역 */
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.result-header h2 {
+    font-size: 1.45rem;
+    color: #4a3525;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.card-header h3 {
+    display: flex;
+    align-items: center;
+    font-size: 1.15rem;
+    color: #4a3525;
+    margin-bottom: 14px;
+}
+
+/* 마크다운 렌더링 문서 출력창 (따뜻한 노션/베이지 페이퍼 서식) */
+.content-preview {
+    background-color: #fdfcf9;
+    border: 1px solid #ebdcd0;
+    border-radius: 9px;
+    padding: 26px;
+    font-family: inherit;
+    font-size: 0.98rem;
+    color: #382c22;
+    word-break: keep-all;
+    max-height: 600px;
+    overflow-y: auto;
+    line-height: 1.8;
+}
+
+.content-preview h1 {
+    font-size: 1.55rem;
+    color: #4a3525;
+    margin-top: 1.2rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #ebdcd0;
+    font-weight: 700;
+}
+
+.content-preview h2 {
+    font-size: 1.25rem;
+    color: #553e2d;
+    margin-top: 1.4rem;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+.content-preview h3 {
+    font-size: 1.08rem;
+    color: #684f3b;
+    margin-top: 1.1rem;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.content-preview p {
+    margin-bottom: 0.8rem;
+    color: #382c22;
+}
+
+.content-preview ul, .content-preview ol {
+    margin: 0.6rem 0 1rem 1.6rem;
+    color: #382c22;
+}
+
+.content-preview li {
+    margin-bottom: 0.4rem;
+}
+
+.content-preview hr {
+    border: none;
+    border-top: 1px solid #dfd0bf;
+    margin: 1.6rem 0;
+}
+
+.content-preview strong {
+    color: #2b1f16;
+    font-weight: 700;
+}
+
+/* ==========================================================
+   11.5. 모던 오렌지 템플릿(sample1) 전용 감각적 이력서 스타일
+   ========================================================== */
+.template-sample1-view {
+    background-color: #ffffff !important;
+    border: 2px solid #fed7aa !important;
+}
+
+.template-sample1-view h1 {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+    color: #ffffff !important;
+    padding: 16px 22px !important;
+    border-radius: 10px !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.22) !important;
+    margin-bottom: 22px !important;
+    letter-spacing: -0.5px;
+}
+
+.template-sample1-view h2 {
+    background-color: #fff7ed !important;
+    color: #c2410c !important;
+    padding: 9px 16px !important;
+    border-radius: 8px !important;
+    border-left: 5px solid #ea580c !important;
+    margin-top: 24px !important;
+    font-size: 1.25rem !important;
+}
+
+.template-sample1-view h3 {
+    color: #9a3412 !important;
+}
+
+.template-sample1-view strong {
+    color: #c2410c !important;
+}
+
+.template-sample1-view ul {
+    border-left: 2px dashed #fed7aa;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+.template-sample1-view li::marker {
+    color: #ea580c;
+}
+
+/* 12. 하단 푸터 */
+.app-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e8ded2;
+    font-size: 0.85rem;
+    color: #9d8b7a;
+}
+
+/* ==========================================================
+   13. 모바일 반응형 디자인 최적화 (Mobile Responsive)
+   ========================================================== */
+@media (max-width: 640px) {
+    body {
+        padding: 12px 6px;
+    }
+
+    .container {
+        padding: 4px;
+    }
+
+    .app-header {
+        margin-bottom: 20px;
+    }
+
+    .app-header h1 {
+        font-size: 1.6rem;
+        word-break: keep-all;
+    }
+
+    .app-header .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .form-card, .result-card {
+        padding: 20px 16px;
+        border-radius: 12px;
+        margin-bottom: 18px;
+    }
+
+    .form-card h2 {
+        font-size: 1.2rem;
+        margin-bottom: 16px;
+    }
+
+    /* 모바일 템플릿 선택기 그리드 반응형 */
+    .template-selector-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .template-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 12px;
+    }
+
+    .template-img-wrap {
+        width: 80px;
+        height: 70px;
+        flex-shrink: 0;
+    }
+
+    .template-desc {
+        margin-top: 0;
+    }
+
+    /* iOS 사파리에서 인풋 클릭 시 화면이 확대(자동 줌)되는 현상 방지 (최소 16px) */
+    input[type="text"],
+    textarea,
+    select {
+        font-size: 16px;
+        padding: 12px 14px;
+        border-radius: 8px;
+    }
+
+    /* 모바일 터치 타겟 최적화 (손가락으로 쉽게 누를 수 있도록 크기 보정) */
+    .btn {
+        min-height: 44px;
+        font-size: 0.95rem;
+    }
+
+    .btn-primary {
+        padding: 14px;
+        font-size: 1rem;
+    }
+
+    /* 결과 액션 버튼을 스마트폰 화면에 맞게 2열 + 1열 그리드로 재배치 */
+    .result-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .action-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        width: 100%;
+    }
+
+    /* 마크다운 다운로드 버튼은 하단 전체 너비로 시원하게 배치 */
+    #download-md-btn {
+        grid-column: span 2;
+    }
+
+    .content-preview {
+        padding: 18px 14px;
+        font-size: 0.92rem;
+        line-height: 1.7;
+    }
+
+    .content-preview h1 {
+        font-size: 1.35rem;
+    }
+
+    .content-preview h2 {
+        font-size: 1.15rem;
+    }
+
+    .content-preview h3 {
+        font-size: 1.02rem;
+    }
+}
+
