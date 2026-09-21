@@ -58,23 +58,47 @@ def build_prompt(name: str, job_title: str, experience: str, projects: str, tone
             "3. 누구나 편안하고 긍정적으로 읽을 수 있는 단정하고 설득력 있는 톤을 유지하세요."
         )
 
-    # 템플릿 양식별 특화 지시사항
-    if template_style == "sample1":
+    # 템플릿 양식별 특화 지시사항 (총 6가지 맞춤형 구성)
+    if template_style == "blue_timeline":
         template_guide = (
-            "[디자인 양식: 모던 오렌지 2단 템플릿]\n"
-            "- 상단 헤더: 지원자의 핵심 프로필 요약과 인적사항을 인상 깊게 배치하세요.\n"
-            "- 핵심 역량(좌측 사이드바 대응): 보유 역량, 핵심 스킬, 자격증을 키워드 중심으로 명확히 구분하세요.\n"
-            "- 상세 경력 및 프로젝트(우측 메인 대응): 실무 경험과 문제 해결 과정을 체계적인 소제목으로 작성하세요."
+            "[디자인 양식: 1. 블루 열정 타임라인형]\n"
+            "- 헤드라인: 지원자의 열정과 직무 철학을 나타내는 인상 깊은 대형 슬로건 캐치프레이즈를 맨 위에 작성하세요. (예: '# 열정에 죽고 열정에 사는 {name}')\n"
+            "- 구성: 1) 프로필 요약 2) 주요 경력 타임라인(연도별/단계별) 3) 핵심 기술 숙련도(상/중/하) 4) 학력 및 수상/자격증"
         )
-    elif template_style == "minimal":
+    elif template_style == "burgundy_classic":
         template_guide = (
-            "[디자인 양식: 심플 모노크롬 템플릿]\n"
-            "- 미니멀하고 담백하게 핵심 경력과 성과 중심의 불릿 포인트로 작성하세요."
+            "[디자인 양식: 2. 버건디 클래식 세리프형]\n"
+            "- 헤드라인: 영문 및 국문 성명과 직무 타이틀을 고급스럽게 병기하세요. (예: '# {name} MINYOUNG KANG - {job_title}')\n"
+            "- 구성: 1) 전문 프로필 소개 2) 보유 자격증(LICENSE) & 스킬(SKILLS) 3) 상세 실무 경력 기술서(WORK EXPERIENCE) 4) 학력(EDUCATION)"
+        )
+    elif template_style == "mint_sidebar":
+        template_guide = (
+            "[디자인 양식: 3. 소프트 민트 2단형]\n"
+            "- 헤드라인: 신뢰감 있고 친근한 인사말 슬로건으로 시작하세요. (예: '# 성실하고 {job_title} 잘하는 {name}입니다')\n"
+            "- 구성: [좌측 사이드바 영역]: 기본 정보, 자격증, 기술 역량 / [우측 메인 영역]: 학력 사항, 실무 경력 상세, 프로젝트 및 수상 실적"
+        )
+    elif template_style == "yellow_bold":
+        template_guide = (
+            "[디자인 양식: 4. 볼드 옐로우 & 블랙형]\n"
+            "- 헤드라인: 당당하고 트렌디한 네이밍으로 시작하세요. (예: '# 어디서도 본 적 없는 {name}')\n"
+            "- 구성: 1) [{name}의 발자취] 학력/주요이력 2) [{name}의 활약] 핵심 실무 프로젝트 3) [{name}의 능력 & 스킬] 직무 도구 및 자격증"
+        )
+    elif template_style == "corporate_gray":
+        template_guide = (
+            "[디자인 양식: 5. 코퍼레이트 스탠다드형]\n"
+            "- 헤드라인: 대기업/공공기관/사무직용 단정하고 신뢰감 있는 표준 타이틀. (예: '# 바르고 성실한 {job_title} {name}')\n"
+            "- 구성: 1) 기본 인적사항(PERSONAL DETAIL) 2) 자격증(LICENSE) 3) 학력(EDUCATION) 4) 전문 기술(SKILLS) 5) 대외활동 6) 상세 경력사항(WORK EXPERIENCE)"
+        )
+    elif template_style == "skyblue_story":
+        template_guide = (
+            "[디자인 양식: 6. 스카이블루 스토리형]\n"
+            "- 헤드라인: 밝고 긍정적인 스토리텔링형 문구로 시작하세요. (예: '# 하고 싶은 일이 많은 {job_title} {name}입니다')\n"
+            "- 구성: 1) PROFILE 2) LIFE & CAREER 히스토리 3) LICENSE & SKILLS 4) My Story (직무에 대한 가치관과 비전)"
         )
     else:
         template_guide = (
-            "[디자인 양식: 클래식 베이지 템플릿]\n"
-            "- 전통적인 문서 양식에 맞춰 차분하고 신뢰감 있는 표준 문장으로 작성하세요."
+            "[디자인 양식: 표준형]\n"
+            "- 가독성이 뛰어난 표준 구조로 프로필, 핵심역량, 경력사항, 프로젝트를 작성하세요."
         )
 
     prompt = f"""{role_instruction}

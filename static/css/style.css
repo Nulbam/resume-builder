@@ -223,14 +223,20 @@ textarea {
     position: absolute;
     top: 6px;
     left: 6px;
-    background-color: #ea580c;
     color: #ffffff;
     font-size: 0.68rem;
     font-weight: 700;
-    padding: 2px 7px;
+    padding: 2.5px 7px;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.badge-blue { background-color: #1d4ed8; }
+.badge-burgundy { background-color: #881337; }
+.badge-mint { background-color: #0f766e; }
+.badge-yellow { background-color: #b45309; }
+.badge-gray { background-color: #475569; }
+.badge-skyblue { background-color: #0284c7; }
 
 .select-check {
     position: absolute;
@@ -251,61 +257,6 @@ textarea {
 
 .template-card.active .select-check {
     display: flex;
-}
-
-/* 플레이스홀더 템플릿 실루엣 */
-.placeholder-wrap {
-    padding: 12px;
-    background-color: #fcfbf9;
-}
-
-.beige-wrap {
-    background-color: #f7f3ec;
-}
-
-.mono-wrap {
-    background-color: #f1f5f9;
-}
-
-.mini-doc-preview {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
-
-.mini-line {
-    height: 7px;
-    border-radius: 4px;
-    background-color: #e5dacb;
-}
-
-.header-line {
-    height: 12px;
-    background-color: #9d683a;
-    width: 70%;
-    border-radius: 4px;
-}
-
-.header-line.dark {
-    background-color: #334155;
-}
-
-.sub-line {
-    width: 45%;
-    background-color: #c4b5a3;
-}
-
-.body-line {
-    width: 100%;
-}
-
-.body-line.dark {
-    background-color: #cbd5e1;
-}
-
-.half-line {
-    width: 60%;
 }
 
 .template-desc {
@@ -541,51 +492,141 @@ textarea {
 }
 
 /* ==========================================================
-   11.5. 모던 오렌지 템플릿(sample1) 전용 감각적 이력서 스타일
+   11.5. 6개 디자인 템플릿별 맞춤형 이력서 렌더링 스타일
    ========================================================== */
-.template-sample1-view {
-    background-color: #ffffff !important;
-    border: 2px solid #fed7aa !important;
-}
 
-.template-sample1-view h1 {
-    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+/* 1. 블루 열정 타임라인형 */
+.template-blue_timeline-view h1 {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
     color: #ffffff !important;
     padding: 16px 22px !important;
     border-radius: 10px !important;
     border-bottom: none !important;
-    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.22) !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25) !important;
     margin-bottom: 22px !important;
-    letter-spacing: -0.5px;
 }
-
-.template-sample1-view h2 {
-    background-color: #fff7ed !important;
-    color: #c2410c !important;
+.template-blue_timeline-view h2 {
+    background-color: #eff6ff !important;
+    color: #1e40af !important;
     padding: 9px 16px !important;
     border-radius: 8px !important;
-    border-left: 5px solid #ea580c !important;
+    border-left: 5px solid #2563eb !important;
     margin-top: 24px !important;
-    font-size: 1.25rem !important;
 }
+.template-blue_timeline-view strong { color: #1e40af !important; }
+.template-blue_timeline-view ul { border-left: 2px dashed #bfdbfe; padding-left: 20px; margin-left: 10px; }
+.template-blue_timeline-view li::marker { color: #2563eb; }
 
-.template-sample1-view h3 {
-    color: #9a3412 !important;
+/* 2. 버건디 클래식 세리프형 */
+.template-burgundy_classic-view h1 {
+    background: linear-gradient(135deg, #881337 0%, #4c0519 100%) !important;
+    color: #ffffff !important;
+    padding: 16px 22px !important;
+    border-radius: 10px !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 14px rgba(136, 19, 55, 0.25) !important;
+    margin-bottom: 22px !important;
+    font-family: "Georgia", "Times New Roman", serif, sans-serif !important;
 }
+.template-burgundy_classic-view h2 {
+    background-color: #fff1f2 !important;
+    color: #9f1239 !important;
+    padding: 9px 16px !important;
+    border-radius: 8px !important;
+    border-left: 5px solid #be123c !important;
+    margin-top: 24px !important;
+}
+.template-burgundy_classic-view strong { color: #881337 !important; }
+.template-burgundy_classic-view ul { border-left: 2px dashed #fecdd3; padding-left: 20px; margin-left: 10px; }
+.template-burgundy_classic-view li::marker { color: #be123c; }
 
-.template-sample1-view strong {
-    color: #c2410c !important;
+/* 3. 소프트 민트 사이드바형 */
+.template-mint_sidebar-view h1 {
+    background: linear-gradient(135deg, #0d9488 0%, #115e59 100%) !important;
+    color: #ffffff !important;
+    padding: 16px 22px !important;
+    border-radius: 10px !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25) !important;
+    margin-bottom: 22px !important;
 }
+.template-mint_sidebar-view h2 {
+    background-color: #f0fdfa !important;
+    color: #0f766e !important;
+    padding: 9px 16px !important;
+    border-radius: 8px !important;
+    border-left: 5px solid #0d9488 !important;
+    margin-top: 24px !important;
+}
+.template-mint_sidebar-view strong { color: #0f766e !important; }
+.template-mint_sidebar-view ul { border-left: 2px dashed #99f6e4; padding-left: 20px; margin-left: 10px; }
+.template-mint_sidebar-view li::marker { color: #0d9488; }
 
-.template-sample1-view ul {
-    border-left: 2px dashed #fed7aa;
-    padding-left: 20px;
-    margin-left: 10px;
+/* 4. 볼드 옐로우 & 블랙형 */
+.template-yellow_bold-view h1 {
+    background: linear-gradient(135deg, #18181b 0%, #27272a 100%) !important;
+    color: #facc15 !important;
+    padding: 16px 22px !important;
+    border-radius: 10px !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 14px rgba(24, 24, 27, 0.3) !important;
+    margin-bottom: 22px !important;
 }
+.template-yellow_bold-view h2 {
+    background-color: #fefce8 !important;
+    color: #854d0e !important;
+    padding: 9px 16px !important;
+    border-radius: 8px !important;
+    border-left: 5px solid #eab308 !important;
+    margin-top: 24px !important;
+}
+.template-yellow_bold-view strong { color: #a16207 !important; }
+.template-yellow_bold-view ul { border-left: 2px dashed #fde047; padding-left: 20px; margin-left: 10px; }
+.template-yellow_bold-view li::marker { color: #ca8a04; }
 
-.template-sample1-view li::marker {
-    color: #ea580c;
+/* 5. 코퍼레이트 스탠다드형 */
+.template-corporate_gray-view h1 {
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%) !important;
+    color: #ffffff !important;
+    padding: 16px 22px !important;
+    border-radius: 10px !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 14px rgba(51, 65, 85, 0.25) !important;
+    margin-bottom: 22px !important;
 }
+.template-corporate_gray-view h2 {
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+    padding: 9px 16px !important;
+    border-radius: 8px !important;
+    border-left: 5px solid #475569 !important;
+    margin-top: 24px !important;
+}
+.template-corporate_gray-view strong { color: #334155 !important; }
+.template-corporate_gray-view ul { border-left: 2px dashed #cbd5e1; padding-left: 20px; margin-left: 10px; }
+.template-corporate_gray-view li::marker { color: #475569; }
+
+/* 6. 스카이블루 비비드 스토리형 */
+.template-skyblue_story-view h1 {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    padding: 16px 22px !important;
+    border-radius: 10px !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25) !important;
+    margin-bottom: 22px !important;
+}
+.template-skyblue_story-view h2 {
+    background-color: #f0f9ff !important;
+    color: #0369a1 !important;
+    padding: 9px 16px !important;
+    border-radius: 8px !important;
+    border-left: 5px solid #0284c7 !important;
+    margin-top: 24px !important;
+}
+.template-skyblue_story-view strong { color: #0284c7 !important; }
+.template-skyblue_story-view ul { border-left: 2px dashed #bae6fd; padding-left: 20px; margin-left: 10px; }
+.template-skyblue_story-view li::marker { color: #0284c7; }
 
 /* 12. 하단 푸터 */
 .app-footer {

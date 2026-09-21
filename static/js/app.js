@@ -149,11 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 fullMarkdown: data.full_markdown || `${data.resume}\n\n---\n\n${data.portfolio}`
             };
 
-            // 선택한 템플릿에 따른 결과창 클래스 토글 (sample1 템플릿 전용 스타일 활성화)
+            // 선택한 템플릿에 따른 결과창 클래스 적용 (6가지 템플릿 전용 테마 자동 매칭)
             resumeOutput.className = "content-preview";
-            if (data.template_style === "sample1" || templateStyle === "sample1") {
-                resumeOutput.classList.add("template-sample1-view");
-            }
+            const currentTpl = data.template_style || templateStyle || "blue_timeline";
+            resumeOutput.classList.add(`template-${currentTpl}-view`);
 
             // 화면 결과창에 마크다운을 예쁜 HTML 문서로 렌더링하여 표시
             if (typeof marked !== "undefined" && marked.parse) {

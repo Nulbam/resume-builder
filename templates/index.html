@@ -56,57 +56,91 @@
                         </select>
                     </div>
 
-                    <!-- 이력서 디자인 양식(템플릿) 선택 -->
+                    <!-- 이력서 디자인 양식(템플릿) 선택 (총 6종) -->
                     <div class="form-group">
-                        <label><span class="icon-tag">📑</span> 이력서 디자인 양식 선택</label>
+                        <label><span class="icon-tag">📑</span> 이력서 디자인 양식 선택 (6개 샘플 중 선택)</label>
                         <div class="template-selector-grid">
-                            <!-- 템플릿 1: 모던 오렌지 2단형 (sample1.png 이미지 활용) -->
-                            <label class="template-card active" data-template="sample1">
-                                <input type="radio" name="template_style" value="sample1" checked>
+                            <!-- 1. 블루 열정 타임라인형 -->
+                            <label class="template-card active" data-template="blue_timeline">
+                                <input type="radio" name="template_style" value="blue_timeline" checked>
                                 <div class="template-img-wrap">
-                                    <img src="/static/img/sample1.png" alt="모던 오렌지 2단형 양식 미리보기" class="template-thumb">
-                                    <span class="template-badge">추천 양식</span>
+                                    <img src="/static/img/tpl_blue_timeline.png" alt="블루 타임라인형 양식" class="template-thumb">
+                                    <span class="template-badge badge-blue">헤드라인형</span>
                                     <span class="select-check">✓</span>
                                 </div>
                                 <div class="template-desc">
-                                    <strong>모던 오렌지 2단형 (샘플 1)</strong>
-                                    <span>프로필 사진과 사이드바가 강조된 트렌디한 비주얼 양식</span>
+                                    <strong>1. 블루 열정 타임라인</strong>
+                                    <span>대형 슬로건 + 타임라인형 경력 + 역량 바</span>
                                 </div>
                             </label>
 
-                            <!-- 템플릿 2: 클래식 베이지 표준형 -->
-                            <label class="template-card" data-template="classic">
-                                <input type="radio" name="template_style" value="classic">
-                                <div class="template-img-wrap placeholder-wrap beige-wrap">
-                                    <div class="mini-doc-preview">
-                                        <div class="mini-line header-line"></div>
-                                        <div class="mini-line sub-line"></div>
-                                        <div class="mini-line body-line"></div>
-                                        <div class="mini-line body-line"></div>
-                                        <div class="mini-line half-line"></div>
-                                    </div>
+                            <!-- 2. 버건디 클래식 세리프형 -->
+                            <label class="template-card" data-template="burgundy_classic">
+                                <input type="radio" name="template_style" value="burgundy_classic">
+                                <div class="template-img-wrap">
+                                    <img src="/static/img/tpl_burgundy_classic.png" alt="버건디 클래식형 양식" class="template-thumb">
+                                    <span class="template-badge badge-burgundy">고급 클래식</span>
                                     <span class="select-check">✓</span>
                                 </div>
                                 <div class="template-desc">
-                                    <strong>클래식 베이지 표준형</strong>
-                                    <span>차분하고 신뢰감을 주는 전통적인 1단 문서 양식</span>
+                                    <strong>2. 버건디 클래식 세리프</strong>
+                                    <span>우아한 상단 와인 배너 + 좌측 사이드바 2단</span>
                                 </div>
                             </label>
 
-                            <!-- 템플릿 3: 미니멀 모노크롬형 -->
-                            <label class="template-card" data-template="minimal">
-                                <input type="radio" name="template_style" value="minimal">
-                                <div class="template-img-wrap placeholder-wrap mono-wrap">
-                                    <div class="mini-doc-preview">
-                                        <div class="mini-line header-line dark"></div>
-                                        <div class="mini-line body-line dark"></div>
-                                        <div class="mini-line body-line dark"></div>
-                                    </div>
+                            <!-- 3. 소프트 민트 사이드바형 -->
+                            <label class="template-card" data-template="mint_sidebar">
+                                <input type="radio" name="template_style" value="mint_sidebar">
+                                <div class="template-img-wrap">
+                                    <img src="/static/img/tpl_mint_sidebar.png" alt="소프트 민트 사이드바형 양식" class="template-thumb">
+                                    <span class="template-badge badge-mint">신입/스타트업</span>
                                     <span class="select-check">✓</span>
                                 </div>
                                 <div class="template-desc">
-                                    <strong>심플 모노크롬형</strong>
-                                    <span>군더더기 없이 경력과 성과에 집중하는 깔끔한 흑백 양식</span>
+                                    <strong>3. 소프트 민트 2단형</strong>
+                                    <span>산뜻한 민트 사이드바 + 균형 잡힌 실무 구성</span>
+                                </div>
+                            </label>
+
+                            <!-- 4. 볼드 옐로우 & 블랙형 -->
+                            <label class="template-card" data-template="yellow_bold">
+                                <input type="radio" name="template_style" value="yellow_bold">
+                                <div class="template-img-wrap">
+                                    <img src="/static/img/tpl_yellow_bold.png" alt="볼드 옐로우 블랙형 양식" class="template-thumb">
+                                    <span class="template-badge badge-yellow">트렌디 힙</span>
+                                    <span class="select-check">✓</span>
+                                </div>
+                                <div class="template-desc">
+                                    <strong>4. 볼드 옐로우 & 블랙</strong>
+                                    <span>다크 헤더 + 옐로우 포인트 + 포트폴리오형</span>
+                                </div>
+                            </label>
+
+                            <!-- 5. 코퍼레이트 스탠다드형 -->
+                            <label class="template-card" data-template="corporate_gray">
+                                <input type="radio" name="template_style" value="corporate_gray">
+                                <div class="template-img-wrap">
+                                    <img src="/static/img/tpl_corporate_gray.png" alt="코퍼레이트 스탠다드형 양식" class="template-thumb">
+                                    <span class="template-badge badge-gray">대기업/공채</span>
+                                    <span class="select-check">✓</span>
+                                </div>
+                                <div class="template-desc">
+                                    <strong>5. 코퍼레이트 스탠다드</strong>
+                                    <span>깔끔한 그레이 톤 + 신뢰감 있는 표준 표 양식</span>
+                                </div>
+                            </label>
+
+                            <!-- 6. 스카이블루 비비드 스토리형 -->
+                            <label class="template-card" data-template="skyblue_story">
+                                <input type="radio" name="template_style" value="skyblue_story">
+                                <div class="template-img-wrap">
+                                    <img src="/static/img/tpl_skyblue_story.png" alt="스카이블루 비비드형 양식" class="template-thumb">
+                                    <span class="template-badge badge-skyblue">스토리텔링</span>
+                                    <span class="select-check">✓</span>
+                                </div>
+                                <div class="template-desc">
+                                    <strong>6. 스카이블루 스토리형</strong>
+                                    <span>밝고 긍정적인 자기소개 + 핵심 역량 하이라이트</span>
                                 </div>
                             </label>
                         </div>
