@@ -135,6 +135,21 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/manifest.json")
+def manifest():
+    """PWA 매니페스트 제공 라우트"""
+    return app.send_static_file("manifest.json")
+
+
+@app.route("/sw.js")
+def service_worker():
+    """PWA 서비스 워커 제공 라우트 (루트 스코프 헤더 설정)"""
+    response = app.send_static_file("sw.js")
+    response.headers["Content-Type"] = "application/javascript"
+    response.headers["Service-Worker-Allowed"] = "/"
+    return response
+
+
 @app.route("/generate", methods=["POST"])
 def generate():
     """Gemini API를 호출하여 이력서와 포트폴리오를 생성하는 REST API 엔드포인트"""

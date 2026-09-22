@@ -6,6 +6,10 @@
     <title>AI Resume & Portfolio Builder</title>
     <!-- 정적 CSS 스타일시트 연결 -->
     <link rel="stylesheet" href="/static/css/style.css">
+    <!-- PWA 설정 메타태그 & 매니페스트 연결 -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#34495E">
+    <link rel="apple-touch-icon" href="/static/img/icon-192.png">
 </head>
 <body>
     <div class="container">
@@ -218,5 +222,15 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- 정적 자바스크립트 연결 -->
     <script src="/static/js/app.js"></script>
+    <!-- PWA Service Worker 등록 -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((reg) => console.log('[PWA] Service Worker 등록 완료:', reg.scope))
+                    .catch((err) => console.warn('[PWA] Service Worker 등록 실패:', err));
+            });
+        }
+    </script>
 </body>
 </html>
