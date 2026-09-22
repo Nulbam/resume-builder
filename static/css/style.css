@@ -755,3 +755,249 @@ textarea {
     }
 }
 
+/* ==========================================================
+   PWA 상단 설치 배너, 헤더 설치 버튼 & 안내 모달 스타일
+   ========================================================== */
+
+/* 1. 헤더 메인 행 및 앱 설치 버튼 */
+.header-main-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.pwa-header-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #ffffff;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(44, 62, 80, 0.25);
+    transition: all 0.2s ease;
+}
+
+.pwa-header-btn:hover {
+    background: linear-gradient(135deg, #1a252f, #2c3e50);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(44, 62, 80, 0.35);
+}
+
+.pwa-btn-icon {
+    font-size: 1rem;
+}
+
+/* 2. 접속 즉시 노출되는 상단 PWA 설치 배너 */
+.pwa-install-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 1.5px solid #d4c5b9;
+    border-left: 5px solid #d35400; /* 포인트 오렌지 바 */
+    border-radius: 12px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 14px rgba(70, 50, 30, 0.08);
+    animation: pwaSlideDown 0.35s ease-out;
+}
+
+@keyframes pwaSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pwa-banner-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.pwa-banner-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    flex-shrink: 0;
+}
+
+.pwa-banner-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.pwa-banner-text strong {
+    font-size: 0.96rem;
+    color: #4a3525;
+}
+
+.pwa-banner-text span {
+    font-size: 0.84rem;
+    color: #7d6b5c;
+    margin-top: 2px;
+}
+
+.pwa-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.btn-pwa-install {
+    background: linear-gradient(135deg, #d35400, #e67e22);
+    color: #ffffff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(211, 84, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.btn-pwa-install:hover {
+    background: linear-gradient(135deg, #ba4a00, #d35400);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(211, 84, 0, 0.4);
+}
+
+.btn-pwa-close {
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    color: #a89f91;
+    cursor: pointer;
+    padding: 4px 8px;
+    line-height: 1;
+    border-radius: 6px;
+    transition: color 0.15s ease;
+}
+
+.btn-pwa-close:hover {
+    color: #4a3525;
+    background: #f0eae1;
+}
+
+/* 3. PWA 설치 가이드 모달 */
+.pwa-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(40, 30, 20, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 16px;
+}
+
+.pwa-modal-card {
+    background: #ffffff;
+    border-radius: 16px;
+    max-width: 440px;
+    width: 100%;
+    padding: 24px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e2d5c8;
+    animation: pwaModalPop 0.25s ease-out;
+}
+
+@keyframes pwaModalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.pwa-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.pwa-modal-header h3 {
+    font-size: 1.15rem;
+    color: #4a3525;
+    margin: 0;
+}
+
+.btn-modal-x {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #9c8e82;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.pwa-modal-body {
+    font-size: 0.92rem;
+    color: #5c4738;
+    margin-bottom: 20px;
+}
+
+.pwa-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-modal-confirm {
+    background: #4a3525;
+    color: #ffffff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.btn-modal-confirm:hover {
+    background: #2e2015;
+}
+
+/* 4. 모바일 반응형 최적화 */
+@media (max-width: 600px) {
+    .pwa-install-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .pwa-banner-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .btn-pwa-install {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+
