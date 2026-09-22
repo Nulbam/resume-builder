@@ -349,6 +349,38 @@ textarea {
     background-color: #4d6039;
 }
 
+/* 이력서 이미지(.png) 저장 버튼 (선명하고 세련된 딥 테라코타 오렌지) */
+.btn-image {
+    background-color: #d35400;
+    color: #ffffff;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    box-shadow: 0 2px 8px rgba(211, 84, 0, 0.2);
+}
+
+.btn-image:hover {
+    background-color: #b94600;
+}
+
+/* 이력서 카드 헤더 우측의 간편 이미지 저장 버튼 */
+.btn-card-save-img {
+    background: #fcf8f4;
+    color: #a04000;
+    border: 1px solid #e09f67;
+    border-radius: 6px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-card-save-img:hover {
+    background: #faece1;
+    border-color: #d35400;
+    transform: translateY(-1px);
+}
+
 /* 9. 경고 및 오류 알림 박스 */
 .alert {
     padding: 15px 18px;
@@ -731,7 +763,8 @@ textarea {
         width: 100%;
     }
 
-    /* 마크다운 다운로드 버튼은 하단 전체 너비로 시원하게 배치 */
+    /* 이미지 저장 및 마크다운 다운로드 버튼은 각각 하단 전체 너비로 시원하게 배치 */
+    #download-resume-img-btn,
     #download-md-btn {
         grid-column: span 2;
     }

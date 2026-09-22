@@ -206,14 +206,16 @@
                     <div class="action-buttons">
                         <button type="button" id="copy-resume-btn" class="btn btn-secondary">📋 이력서 복사</button>
                         <button type="button" id="copy-portfolio-btn" class="btn btn-secondary">📋 포트폴리오 복사</button>
+                        <button type="button" id="download-resume-img-btn" class="btn btn-image">🖼️ 이력서 이미지(.png) 저장</button>
                         <button type="button" id="download-md-btn" class="btn btn-success">📥 마크다운(.md) 다운로드</button>
                     </div>
                 </div>
 
                 <!-- 이력서 결과 카드 -->
-                <div class="result-card">
+                <div class="result-card" id="resume-card-section">
                     <div class="card-header">
                         <h3><span class="icon-tag icon-resume">📄</span> 이력서 (Resume)</h3>
+                        <button type="button" id="card-resume-img-btn" class="btn-card-save-img">🖼️ 한 장의 이미지로 저장</button>
                     </div>
                     <div class="card-body">
                         <div id="resume-output" class="content-preview"></div>
@@ -254,6 +256,8 @@
         </div>
     </div>
 
+    <!-- HTML을 고화질 이미지로 캡처하는 라이브러리 (html2canvas) -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <!-- 마크다운 렌더링 라이브러리 (marked.js) -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- 정적 자바스크립트 연결 -->

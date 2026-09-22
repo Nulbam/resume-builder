@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const copyResumeBtn = document.getElementById("copy-resume-btn");
     const copyPortfolioBtn = document.getElementById("copy-portfolio-btn");
     const downloadMdBtn = document.getElementById("download-md-btn");
+    const downloadResumeImgBtn = document.getElementById("download-resume-img-btn");
+    const cardResumeImgBtn = document.getElementById("card-resume-img-btn");
 
     // 최신 생성 결과 데이터를 보관하는 변수
     let currentResult = {
@@ -238,4 +240,126 @@ document.addEventListener("DOMContentLoaded", () => {
         // 메모리 해제
         URL.revokeObjectURL(downloadUrl);
     });
+
+    /**
+     * 6. 이력서를 고화질 단일 이미지(PNG)로 캡처하여 저장하는 함수 (전체 내용 누락 없이 완전 저장)
+     */
+    async function saveResumeAsImage(triggerBtn) {
+        if (!currentResult.resume) {
+            alert("저장할 이력서 결과물이 없습니다. 먼저 이력서를 생성해 주세요.");
+            return;
+        }
+
+        if (typeof html2canvas === "undefined") {
+            alert("이미지 변환 엔진을 준비하는 중입니다. 잠시 후 다시 눌러주세요.");
+            return;
+        }
+
+        const targetElement = document.getElementById("resume-output");
+        if (!targetElement) return;
+
+        const originalText = triggerBtn ? triggerBtn.textContent : "";
+        if (triggerBtn) {
+            triggerBtn.disabled = true;
+            triggerBtn.textContent = "⏳ 전체 이력서 이미지 생성 중...";
+        }
+
+        // 스크롤 박스(max-height: 600px)에 의해 잘리는 현상을 완벽 방지하기 위해 스타일 백업
+        const originalMaxHeight = targetElement.style.maxHeight;
+        const originalOverflow = targetElement.style.overflow;
+        const originalOverflowY = targetElement.style.overflowY;
+        const originalHeight = targetElement.style.height;
+
+        try {
+            // 1. 높이 및 스크롤 제한을 완전히 해제하여 이력서 전체 내용 펼치기
+            targetElement.style.maxHeight = "none";
+            targetElement.style.overflow = "visible";
+            targetElement.style.overflowY = "visible";
+            targetElement.style.height = "auto";
+
+            // 브라우저 렌더 트리가 전체 높이로 계산될 수 있도록 미세 대기
+            await new Promise((resolve) => setTimeout(resolve, 80));
+
+            // 2. 펼쳐진 전체 높이 및 너비 정밀 측정
+            const fullHeight = Math.max(targetElement.scrollHeight, targetElement.offsetHeight);
+            const fullWidth = Math.max(targetElement.scrollWidth, targetElement.offsetWidth, 760);
+
+            // 3. html2canvas로 전체 영역을 2배 고해상도로 캡처
+            const canvas = await html2canvas(targetElement, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                backgroundColor: "#ffffff",
+                width: fullWidth,
+                height: fullHeight,
+                windowWidth: fullWidth,
+                windowHeight: fullHeight,
+                x: 0,
+                y: 0,
+                scrollX: 0,
+                scrollY: 0,
+                onclone: (clonedDoc) => {
+                    const clonedTarget = clonedDoc.getElementById("resume-output");
+                    if (clonedTarget) {
+                        clonedTarget.style.maxHeight = "none";
+                        clonedTarget.style.overflow = "visible";
+                        clonedTarget.style.overflowY = "visible";
+                        clonedTarget.style.height = "auto";
+                        clonedTarget.style.padding = "36px 30px";
+                        clonedTarget.style.boxShadow = "none";
+                        clonedTarget.style.backgroundColor = "#ffffff";
+                    }
+                    // 상위 부모 요소들의 스크롤 및 높이 제한도 일괄 해제
+                    let parent = clonedTarget ? clonedTarget.parentElement : null;
+                    while (parent && parent !== clonedDoc.body) {
+                        parent.style.overflow = "visible";
+                        parent.style.maxHeight = "none";
+                        parent.style.height = "auto";
+                        parent = parent.parentElement;
+                    }
+                }
+            });
+
+            // 4. 캔버스를 고화질 PNG 데이터로 추출하여 다운로드 트리거
+            const imgData = canvas.toDataURL("image/png");
+            const tempLink = document.createElement("a");
+            const safeName = currentResult.name.replace(/\s+/g, "_") || "지원자";
+            const safeJob = currentResult.jobTitle.replace(/\s+/g, "_") || "직무";
+
+            tempLink.href = imgData;
+            tempLink.download = `${safeName}_${safeJob}_이력서.png`;
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            document.body.removeChild(tempLink);
+
+            if (triggerBtn) {
+                triggerBtn.textContent = "✅ 전체 이미지 저장 완료!";
+                setTimeout(() => {
+                    triggerBtn.textContent = originalText;
+                    triggerBtn.disabled = false;
+                }, 2200);
+            }
+        } catch (error) {
+            console.error("이력서 이미지 저장 오류:", error);
+            alert("이미지 저장 중 오류가 발생했습니다. 다시 시도해 주세요.");
+            if (triggerBtn) {
+                triggerBtn.textContent = originalText;
+                triggerBtn.disabled = false;
+            }
+        } finally {
+            // 5. 화면 표시 스타일 복원 (화면에서는 다시 깔끔한 스크롤 뷰로 복귀)
+            targetElement.style.maxHeight = originalMaxHeight;
+            targetElement.style.overflow = originalOverflow;
+            targetElement.style.overflowY = originalOverflowY;
+            targetElement.style.height = originalHeight;
+        }
+    }
+
+    if (downloadResumeImgBtn) {
+        downloadResumeImgBtn.addEventListener("click", () => saveResumeAsImage(downloadResumeImgBtn));
+    }
+    if (cardResumeImgBtn) {
+        cardResumeImgBtn.addEventListener("click", () => saveResumeAsImage(cardResumeImgBtn));
+    }
 });
+
